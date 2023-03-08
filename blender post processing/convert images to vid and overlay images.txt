@@ -1,0 +1,12 @@
+#frames to video
+
+ffmpeg -r 24 -f image2 -s 1920x1080 -i ai-render-%04d.png -vcodec libx264 -crf 25  -pix_fmt yuv420p test.mp4
+
+
+#reseize images (neighbeouring neighbours interpolation)
+magick  convert alpha*.png -filter box -quality 100 -resize 1024x1024  -set filename:base "%[basename]" "%[filename:base].png"
+
+#overlay png images
+see loop_im.py
+
+
